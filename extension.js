@@ -1,21 +1,20 @@
-const backgroundMenu = imports.ui.backgroundMenu;
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as backgroundMenu from 'resource:///org/gnome/shell/ui/backgroundMenu.js'
 
-let _originalOpen;
 
-function _modifiedOpen () {
-	return;
-}
+export default class DING extends Extension {
+        constructor(metadata) {
+                super(metadata);
+                this.originalOpen = backgroundMenu.BackgroundMenu.prototype.open;
+                this.modifiedOpen;
+        }
 
-function init () {
+        enable () {
+                backgroundMenu.BackgroundMenu.prototype.open = this.modifiedOpen;
+        }
 
-}
-
-function enable () {
-	_originalOpen = backgroundMenu.BackgroundMenu.prototype.open;
-	backgroundMenu.BackgroundMenu.prototype.open = _modifiedOpen;
-}
-
-function disable () {
-	backgroundMenu.BackgroundMenu.prototype.open = _originalOpen;
-	_originalOpen = null;
+        disable () {
+                backgroundMenu.BackgroundMenu.prototype.open = this.originalOpen;
+                this.originalOpen = null;
+        }
 }
