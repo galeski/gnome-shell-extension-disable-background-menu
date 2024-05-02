@@ -1,10 +1,10 @@
 {
-	"description": "Disable background menu from popping up",
-	"name": "disable background menu",
-	"shell-version": [
-		"3.28.4"
-	],
-	"url": "",
-	"uuid": "disable-background-menu@git.wongwanchap.mo",
-	"version": 1
+        "description": "Disable background menu from popping up",
+        "name": "Disable desktop background menu",
+        "shell-version": [
+                "45", "46"
+        ],
+        "url": "",
+        "uuid": "ding@rastersoft.com",
+        "version": 1
 }
